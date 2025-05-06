@@ -74,21 +74,21 @@ $fileIndex = 1
 
 # Loop through the files and rename them
 foreach ($file in $files) {
-    # Construct the new name based on the letter and number
+	# Construct the new name based on the letter and number
 	$letter = [char]$rowLetter
-    $newName = "$filenamePrefix$letter$fileIndex$filenameSuffix$($file.Extension)"
+	$newName = "$filenamePrefix$letter$fileIndex$filenameSuffix$($file.Extension)"
     
-    # Rename the file
-    Rename-Item -Path $file.FullName -NewName $newName
+	# Rename the file
+	Rename-Item -Path $file.FullName -NewName $newName
     
-    # Increment the file index
-    $fileIndex++
+	# Increment the file index
+	$fileIndex++
     
-    # Check if the number of files in the row is reached
-    if ($fileIndex -gt $filesPerRow) {
-        $fileIndex = 1
-        $rowLetter++  # Move to the next letter in the alphabet
-    }
+	# Check if the number of files in the row is reached
+	if ($fileIndex -gt $filesPerRow) {
+		$fileIndex = 1
+		$rowLetter++  # Move to the next letter in the alphabet
+	}
 }
 
 # Finish
